@@ -3,6 +3,8 @@ import {
   DECREMENT_SESSION,
   INCREMENT_BREAK,
   DECREMENT_BREAK,
+  START,
+  // RESET
 } from './types';
 
 interface TimeState {
@@ -14,6 +16,22 @@ interface TimeState {
 interface TimeAction {
   type: string;
 }
+
+// const setTimer = (): any => {
+//   let myVar
+//   let timesClicked = 0
+//   timesClicked++
+//   if (timesClicked % 2 !== 0) {
+//     myVar = setInterval(() => {
+//       console.log('ffffffffff')
+//     }, 1000);
+//   } else {
+//     clearInterval(myVar)
+//   }
+// }
+// function init() {
+//   return 78
+// }
 
 export const timeReducer = (state: TimeState, action: TimeAction) => {
   switch (action.type) {
@@ -49,7 +67,20 @@ export const timeReducer = (state: TimeState, action: TimeAction) => {
         sessionMinutes: state.sessionMinutes,
         sessionSeconds: state.sessionSeconds,
       };
+
+    case START:
+      return {
+        sessionMinutes: 0,
+        sessionSeconds: '00',
+        breakLength: 6
+      }
+
+    // case RESET:
+    //   return 
+
     default:
-      return state;
+      throw new Error();
   }
 };
+
+

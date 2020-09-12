@@ -2,31 +2,35 @@ import React, { createContext, useReducer } from 'react'
 import { timeReducer } from './TimeReducer'
 
 
-interface InitialStateInterface {
+
+interface TimeInterface {
   breakLength: number,
   sessionMinutes: number,
   sessionSeconds: string
 }
 
+interface LayoutProps {
+  children: React.ReactNode
+}
 
-const initialState = {
+const initialTime = {
   breakLength: 5,
   sessionMinutes: 25,
   sessionSeconds: '00'
 }
 
-const TimeContext = createContext<{ state: InitialStateInterface, dispatch: React.Dispatch<any> }>({
-  state: initialState,
+const TimeContext = createContext<{ time: TimeInterface, dispatch: React.Dispatch<any> }>({
+  time: initialTime,
   dispatch: () => null
 });
 
 
-const AppProvider = (props: any) => {
+const AppProvider = (props: LayoutProps) => {
 
-  const [state, dispatch] = useReducer(timeReducer, initialState)
+  const [time, dispatch] = useReducer(timeReducer, initialTime)
 
   return (
-    <TimeContext.Provider value={{ state, dispatch }}>
+    <TimeContext.Provider value={{ time, dispatch }}>
       {props.children}
     </TimeContext.Provider>
   )
