@@ -1,28 +1,19 @@
 import React, { createContext, useReducer } from 'react'
 import { timeReducer } from './TimeReducer'
+import { TimeInterface, LayoutProps } from '../interfaces/ContextInterface'
 
-
-
-interface TimeInterface {
-  breakLength: number,
-  sessionMinutes: number,
-  sessionSeconds: string
-}
-
-interface LayoutProps {
-  children: React.ReactNode
-}
-
-const initialTime = {
+const initialTime: TimeInterface = {
   breakLength: 5,
-  sessionMinutes: 25,
-  sessionSeconds: '00'
+  sessionLength: 25,
 }
+
 
 const TimeContext = createContext<{ time: TimeInterface, dispatch: React.Dispatch<any> }>({
   time: initialTime,
-  dispatch: () => null
+  dispatch: () => null,
 });
+
+
 
 
 const AppProvider = (props: LayoutProps) => {
