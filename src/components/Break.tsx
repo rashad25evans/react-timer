@@ -8,8 +8,8 @@ const Break = () => {
     <>
       <div id='break-label'>Break Length</div>
       <div id='break-length'>{time.breakLength}</div>
-      <button id='break-decrement' onClick={() => dispatch({ type: 'DECREMENT_BREAK' })}>break-decrement</button>
-      <button id='break-increment' onClick={() => dispatch({ type: 'INCREMENT_BREAK' })}>break-increment</button>
+      <button id='break-decrement' onClick={() => dispatch({ type: 'DECREMENT_BREAK' })} value="-">break-decrement</button>
+      <button id='break-increment' onClick={() => dispatch({ type: 'INCREMENT_BREAK' })} value="+">break-increment</button>
     </>
   );
 };

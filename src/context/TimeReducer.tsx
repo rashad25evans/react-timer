@@ -10,25 +10,6 @@ import { TimeState, TimeAction } from "../interfaces/ReducerInterface"
 
 
 
-
-let timer: any
-let timesClicked: number = 0
-function countDown() {
-  timesClicked++
-  if (timesClicked % 2 !== 0) {
-    timer = window.setInterval(() => {
-      console.log(timesClicked)
-    }, 1000)
-  } else {
-    window.clearInterval(timer)
-    timesClicked++
-  }
-  return 89
-}
-
-
-
-
 export const timeReducer = (state: TimeState, action: TimeAction) => {
   switch (action.type) {
     case INCREMENT_SESSION:
@@ -63,7 +44,7 @@ export const timeReducer = (state: TimeState, action: TimeAction) => {
     case START:
       return {
         ...state,
-        breakLength: countDown()
+
       }
 
     case RESET:

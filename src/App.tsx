@@ -9,9 +9,9 @@ import './App.css';
 const App = () => (
   <div className='App'>
     <AppProvider>
-      ✨✨ ALIVE! ✨✨
+      <span role="img" aria-label="emj">✨✨ ALIVE! ✨✨</span>
       OR
-      ☠ ☠ DEAD ☠ ☠
+      <span role="img" aria-label="emj">☠ ☠ DEAD ☠ ☠</span>
       <Break />
       <Session />
       <MediaButtons />
