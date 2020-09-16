@@ -1,8 +1,9 @@
-export interface TimeInterface {
-  breakLength: number,
-  sessionLength: number,
+export interface LengthInterface {
+  breakLength: number;
+  sessionLength: number;
+  sessionSeconds: any;
 }
 
 export interface LayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }

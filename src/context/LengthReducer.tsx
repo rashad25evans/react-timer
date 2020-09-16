@@ -4,13 +4,11 @@ import {
   INCREMENT_BREAK,
   DECREMENT_BREAK,
   START,
-  RESET
+  RESET,
 } from './types';
-import { TimeState, TimeAction } from "../interfaces/ReducerInterface"
+import { LengthState, LengthAction } from '../interfaces/ReducerInterface';
 
-
-
-export const timeReducer = (state: TimeState, action: TimeAction) => {
+export const lengthReducer = (state: LengthState, action: LengthAction) => {
   switch (action.type) {
     case INCREMENT_SESSION:
       return {
@@ -40,21 +38,24 @@ export const timeReducer = (state: TimeState, action: TimeAction) => {
         breakLength:
           state.breakLength === 1 ? state.breakLength : state.breakLength - 1,
       };
-
     case START:
       return {
         ...state,
-
-      }
-
+        sessionLength:
+          state.sessionSeconds === 59
+            ? state.sessionLength--
+            : state.sessionLength,
+        sessionSeconds:
+          state.sessionSeconds === 0 ? 59 : state.sessionSeconds--,
+      };
     case RESET:
       return {
-        ...state,
-        breakLength: action.payload
-      }
+        breakLength: 5,
+        sessionLength: 25,
+        sessionSeconds: 0,
+      };
 
     default:
       throw new Error('Unexpected action');
   }
 };
-

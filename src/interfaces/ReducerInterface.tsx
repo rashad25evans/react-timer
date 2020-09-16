@@ -1,9 +1,10 @@
-export interface TimeState {
+export interface LengthState {
   breakLength: number;
   sessionLength: number;
+  sessionSeconds: number;
 }
 
-export interface TimeAction {
+export interface LengthAction {
   type: string;
   payload: number;
 }
